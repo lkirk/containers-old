@@ -28,7 +28,7 @@ jobs:
         with:
           push: true
           context: docker/${{ matrix.container }}
-          tags: lloydkirk/bio/${{ matrix.container }}:latest
+          tags: lloydkirk/${{ matrix.container }}:latest
 
   build-workflow:
     runs-on: ubuntu-latest
@@ -43,4 +43,4 @@ jobs:
         with:
           push: false
           context: docker/workflows/bwa-alignment
-          tags: lloydkirk/bio/workflows/bwa-alignment:latest
+          tags: lloydkirk/workflows/bwa-alignment:latest
