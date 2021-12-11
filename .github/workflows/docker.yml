@@ -35,7 +35,7 @@ jobs:
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
-        needs: [samtools, bwa]
+        needs: bwa
         with:
           push: false
           context: docker/bio/workflows/bwa-alignment
