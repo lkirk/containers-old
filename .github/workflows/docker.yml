@@ -62,5 +62,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: false
-          context: docker/bio/workflows/bwa-alignment
+          context: docker/workflows/bwa-alignment
           tags: lloydkirk/bio/workflows/bwa-alignment:latest
