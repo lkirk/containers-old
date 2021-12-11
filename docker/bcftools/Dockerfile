@@ -43,7 +43,7 @@ RUN \
         apt-get update; \
         apt-get install -y --no-install-recommends \
         libcurl4 \
-        libgsl25 \
+        libgsl27 \
         libperl5.32; \
         rm -rf /var/lib/apt/lists/*
 
