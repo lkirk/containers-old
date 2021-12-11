@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        containers:
+        container:
           - samtools
           - bwa
           - bcftools
