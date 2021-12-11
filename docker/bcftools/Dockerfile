@@ -11,6 +11,7 @@ RUN \
         autoconf \
         automake \
         bzip2 \
+        ca-certificates \
         curl \
         gcc \
         libbz2-dev \

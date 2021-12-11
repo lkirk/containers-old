@@ -7,9 +7,10 @@ RUN \
         set -ex; \
         apt-get update; \
         apt-get install -y \
+        ca-certificates \
         curl \
-        make \
         gcc \
+        make \
         zlib1g-dev; \
         curl -L https://github.com/lh3/bwa/archive/$BWA_COMMIT.tar.gz | tar -xz; \
         cd bwa-$BWA_COMMIT; \
