@@ -28,5 +28,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: false
-          context: docker/${{ matrix.container }}
+          context: ./docker/${{ matrix.container }}
           tags: lloydkirk/${{ matrix.container }}:latest
