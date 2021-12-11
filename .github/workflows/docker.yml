@@ -45,12 +45,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: samtools
-          path: /tmp/samtools.tar
+          path: /tmp
       - name: Download container artifact
         uses: actions/download-artifact@v2
         with:
           name: bwa
-          path: /tmp/bwa.tar
+          path: /tmp
       - name: Load Docker Images
         run: |
           docker load --input /tmp/bwa.tar
