@@ -11,7 +11,6 @@ jobs:
           - samtools
           - bwa
           - bcftools
-          - workflows/bwa-alignment
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -22,10 +21,22 @@ jobs:
       #   with:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      # TODO: container version tagging
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: false
           context: docker/${{ matrix.container }}
-          tags: lloydkirk/${{ matrix.container }}:latest
+          tags: lloydkirk/bio/${{ matrix.container }}:latest
+
+      # TODO: template workflows + their dependencies
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        needs: [samtools, bwa]
+        with:
+          push: false
+          context: docker/bio/workflows/bwa-alignment
+          tags: lloydkirk/bio/workflows/bwa-alignment:latest
