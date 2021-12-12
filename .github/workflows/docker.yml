@@ -28,19 +28,19 @@ jobs:
         with:
           push: true
           context: docker/${{ matrix.container }}
-          tags: lloydkirk/${{ matrix.container }}:${{ github.ref_name }}
+          tags: lloydkirk/${{ matrix.container }}:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
 
+  # TODO: template workflows + their dependencies?
   build-workflow:
     runs-on: ubuntu-latest
     needs: build-base-images
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # TODO: template workflows + their dependencies
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: false
           context: docker/workflows/bwa-alignment
-          tags: lloydkirk/workflows/bwa-alignment:${{ github.ref_name }}
+          tags: lloydkirk/workflows/bwa-alignment:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
