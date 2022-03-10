@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: docker/${{ matrix.container }}
+          context: docker/tools/${{ matrix.container }}
           tags: lloydkirk/${{ matrix.container }}:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
 
   # TODO: template workflows + their dependencies?
