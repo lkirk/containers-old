@@ -44,7 +44,7 @@ RUN \
         apt-get install -y --no-install-recommends \
         libcurl4 \
         libgsl27 \
-        libperl5.32; \
+        libperl5.34; \
         rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["bcftools"]
