@@ -1,0 +1,26 @@
+name: singularity publish
+
+on: push
+
+jobs:
+  build-analysis-images:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        container:
+          - python
+          - R
+          - notebook
+    container:
+      image: quay.io/singularity/singularity:v3.9.6-slim
+      options: --privileged
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Container
+        env:
+          SINGULARITYENV_GITHUB_SHA: "${{ github.sha }}"
+        run: |
+          echo "${{ secrets.SYLABS_TOKEN }}" | singularity remote login
+          singularity build out.sif singularity/analysis/${{ matrix.container }}/Singularity
+          singularity push -U out.sif library://lkirk/analysis/${{ matrix.container }}:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
