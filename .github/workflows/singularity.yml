@@ -9,7 +9,7 @@ jobs:
       matrix:
         container:
           - python
-          - R
+          - r
           - notebook
     container:
       image: quay.io/singularity/singularity:v3.9.6-slim
