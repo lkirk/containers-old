@@ -3,7 +3,7 @@ name: docker publish
 on: push
 
 jobs:
-  build-base-images:
+  build-tools-images:
     runs-on: ubuntu-latest
     strategy:
       matrix:
