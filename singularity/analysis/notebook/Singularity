@@ -73,7 +73,7 @@ jupyter lab --no-browser ${@}
     pip install --upgrade pip setuptools
     pip install \
         jupyterlab \
-        jupyterlab_vim \
+        jupyterlab-vim \
         jupyterlab_theme_solarized_dark
 
     # If possible, record the git hash (works in GHA)
