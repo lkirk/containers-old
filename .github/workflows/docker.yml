@@ -19,8 +19,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          username: ${{ secrets.QUAY_IO_USERNAME }}
+          password: ${{ secrets.QUAY_IO_PASSWORD }}
       # TODO: container version tagging
       - name: Build and push
         id: docker_build
@@ -28,7 +28,7 @@ jobs:
         with:
           push: true
           context: docker/tools/${{ matrix.container }}
-          tags: lloydkirk/${{ matrix.container }}:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
+          tags: quay.io/lkirk/${{ matrix.container }}:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
 
   # TODO: template workflows + their dependencies?
   build-workflow:
@@ -43,4 +43,4 @@ jobs:
         with:
           push: false
           context: docker/workflows/bwa-alignment
-          tags: lloydkirk/workflows/bwa-alignment:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
+          tags: quay.io/lkirk/bwa-alignment:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
