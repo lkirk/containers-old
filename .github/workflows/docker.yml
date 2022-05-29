@@ -50,7 +50,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux/amd64, linux/arm64]
         container: [haskell-stack]
     steps:
       - name: Checkout
@@ -68,7 +67,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          platforms: ${{ matrix.platform }}
+          platforms: linux/amd64,linux/arm64
           push: true
           context: docker/devops/${{ matrix.container }}
           tags: quay.io/lkirk/${{ matrix.container }}:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
