@@ -33,3 +33,5 @@ RUN \
         echo 'build failed, see logs' >&2; \
         exit 1; \
     fi
+
+ENV PATH="/root/.ghcup/bin/:${PATH}"
