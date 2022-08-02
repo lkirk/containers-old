@@ -11,6 +11,7 @@ jobs:
           - samtools
           - bwa
           - bcftools
+          - emacs
     steps:
       - name: Checkout
         uses: actions/checkout@v2
