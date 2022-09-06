@@ -18,4 +18,9 @@ COPY --from=build /usr/local/bin /usr/local/bin
 COPY --from=build /usr/local/share/emacs /usr/local/share/emacs
 COPY --from=build /usr/local/libexec/emacs /usr/local/libexec/emacs
 
+RUN \
+    set -ex; \
+    pacman -Syu --noconfirm --quiet jansson; \
+    rm -rf /var/cache/pacman /var/lib/pacman /var/log/pacman.log
+
 ENTRYPOINT ["emacs"]
